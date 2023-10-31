@@ -10,7 +10,7 @@ app = fastapi.FastAPI()
 
 origins = [
     "http://localhost:8080",
-    "https://api-frontend-yft0.onrender.com"
+    "https://api-contactos-frontend1-9eabd5e94204.herokuapp.com"
 ]
 
 app.add_middleware(
