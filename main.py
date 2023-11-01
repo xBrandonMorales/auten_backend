@@ -37,3 +37,17 @@ async def obtener_contactos():
         contacto = {"email":row[0], "nombre":row[1], "telefono":row[2]}
         response.append(contacto)
     return response
+
+@app.get("/contactos/{email}")
+async def buscar_contacto(email: str = Query(..., title="Correo electrónico", description="Correo electrónico del contacto a buscar")):
+    """Busca un contacto por correo electrónico."""
+    # DONE Consulta el contacto con el correo electrónico proporcionado en la base de datos.
+    c = conn.cursor()
+    c.execute('SELECT * FROM contactos WHERE email = ?', (email,))
+    result = c.fetchone()
+    
+    if result is None:
+        raise HTTPException(status_code=404, detail="El contacto no se encontró")
+    
+    contacto = {"email": result[0], "nombre": result[1], "telefono": result[2]}
+    return contacto
