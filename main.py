@@ -64,12 +64,17 @@ async def obtener_contacto(email: str):
 @app.put("/contactos/{email}")
 async def actualizar_contacto(email: str, contacto: Contacto):
     """Actualiza un contacto."""
+    # Asegúrate de que los datos cumplen con las validaciones del modelo Contacto
+    if contacto.nombre is None or contacto.telefono is None:
+        raise fastapi.HTTPException(status_code=422, detail="Nombre y teléfono son campos obligatorios")
+
     # Actualiza el contacto en la base de datos
     c = conn.cursor()
     c.execute('UPDATE contactos SET nombre = ?, telefono = ? WHERE email = ?',
               (contacto.nombre, contacto.telefono, email))
     conn.commit()
     return contacto.dict()
+
 
 @app.delete("/contactos/{email}")
 async def eliminar_contacto(email: str):
