@@ -21,4 +21,5 @@ INSERT INTO usuarios (username, password, token, timestamp)
 VALUES ('brandon@mora.com', '202cb962ac59075b964b07152d234b70', '09b0ac835fe70eb1dc6d20d927af958d', CURRENT_TIMESTAMP);
 
 INSERT INTO usuarios (username, password, token, timestamp) 
+VALUES ('brandito@123.com', 'caf1a3dfb505ffed0d024130f58c5cfa', '09b0ac835fe70eb1dc6d20d927af958d', CURRENT_TIMESTAMP);INSERT INTO usuarios (username, password, token, timestamp) 
 VALUES ('brandito@123.com', 'caf1a3dfb505ffed0d024130f58c5cfa', '09b0ac835fe70eb1dc6d20d927af958d', CURRENT_TIMESTAMP);
